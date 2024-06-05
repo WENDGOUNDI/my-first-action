@@ -1,0 +1,27 @@
+# Define the workflow name
+name: first
+
+# Set a push event
+on: [push]
+
+# Set our job(s)
+# Below we will set 2 jobs
+jobs:
+  # Define our first job
+  job1:
+    # Define the job name
+    name: First job
+    runs-on: ubuntu-latest # the first job is set to run on ubuntu
+    steps: # Use "steps" to define the actions we would like to run. 
+      - name: Step one
+        uses: actions/checkout@v2
+      - name: Step two
+        run: env | sort
+  job2:
+    name: Second job
+    runs-on: windows-latest # the first job is set to run on windows
+      - name: Step one
+        uses: actions/checkout@v2
+      - name: Step two
+        run: "Get-ChildItem Env: | Sort-Object Name"
+
